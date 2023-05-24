@@ -146,6 +146,62 @@ template <typename TIPO> struct ListaDE {
     }
   }
 
+  
+  bool swap_inicio(TIPO dado) {
+    if (inicio == nullptr) {
+      return false;
+    } else {
+      ElementoListaDE<TIPO> *swap = novoelementoDE(dado);
+      swap->proximo = inicio->proximo;
+      inicio->proximo->anterior = swap
+      if (fim == inicio) {
+        fim = swap
+      }
+      swap = inicio;
+      return true;
+    }
+  }
+
+  bool swap_fim(TIPO dado) {
+    if (fim == nullptr) {
+      return false;
+    } else {
+      ElementoListaDE<TIPO> *swap = novoelementoDE(dado);
+      fim->anterior->proximo = swap;
+      swap->anterior = fim->anterior;
+      if (inicio == fim) {
+        inicio = swap;
+      }
+      fim = swap;
+      return true;
+    }
+  }
+
+
+  bool swap_p_indice(TIPO dado, int indice) {
+    ElementoListaDE<TIPO> *novo = novoelementoDE(dado);
+    if (indice >= tamanho()) {
+      return false;
+    } else {
+      if (indice == 0) {
+        swap_inicio(dado);
+      } else if (indice == tamanho() - 1) {
+        swap_fim(dado);
+      } else {
+        ElementoListaDE<TIPO> *nav = inicio;
+        for (int i = 0; i < indice; i++) {
+          nav = nav->proximo;
+        }
+
+        nav->proximo->anterior = novo;
+        nav->anterior->proximo = novo;
+        novo->anterior = nav->anterior;
+        novo->proximo = nav->proximo
+        nav = novo;
+      }
+      return true;
+    }
+  }
 
 };
 

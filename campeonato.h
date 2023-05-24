@@ -1,5 +1,3 @@
-#ifndef CAMPEONATO_H
-#define CAMPEONATO_H
 
 #include<iostream>
 #include"list.h"
@@ -17,6 +15,8 @@ private:
 public:
     Campeonato(string nome, string modalidade);
     void add_times(string nome, ListaDE<Jogador> integrantes);
+    int get_ID();
+    void imprime();
 };
 
 Campeonato::Campeonato(string nome, string modalidade)
@@ -27,10 +27,23 @@ Campeonato::Campeonato(string nome, string modalidade)
     cont++;
 }
 
-int Campeonato::cont = 1;
+int Campeonato::cont = 0;
 
 void Campeonato::add_times(string nome, ListaDE<Jogador> integrantes) {
     Time temp(nome, integrantes);
+    times.insere_fim(temp);
 }
 
-#endif
+int Campeonato::get_ID() {
+    return id;
+}
+
+void Campeonato::imprime() {
+    ElementoListaDE<Time> * nav = times.inicio;
+    while (nav != nullptr)
+    {
+        nav->dado.imprime();
+        nav = nav->proximo;
+    }
+    
+}

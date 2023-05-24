@@ -4,7 +4,7 @@
 using namespace std;
 class Pessoa
 {
-private:
+protected:
     string nome;
     int Idade;
     string sexo;
@@ -26,6 +26,7 @@ private:
     string posicao;
 public:
     Jogador(string nome, string posicao, string sexo, int idade);
+    void imprime();
 };
 
 Jogador::Jogador(string nome, string posicao, string sexo, int idade) : Pessoa(nome, idade, sexo)
@@ -33,5 +34,13 @@ Jogador::Jogador(string nome, string posicao, string sexo, int idade) : Pessoa(n
     this->posicao = posicao;
 }
 
+void Jogador::imprime() {
+    cout<<endl;
+    cout<<"nome: "<<nome<<endl;
+    cout<<"idade: "<<Idade<<endl;
+    cout<<"sexo: "<<sexo<<endl;
+    cout<<"posicao: "<<posicao<<endl;
+    cout<<endl;
+}
 
 #endif
