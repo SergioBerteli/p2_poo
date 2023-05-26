@@ -17,7 +17,27 @@ public:
     void add_times(string nome, ListaDE<Jogador> integrantes);
     int get_ID();
     void imprime();
+    void set_nome(string nome);
+    string get_nome();
+    void set_modalidade(string modalidade);
+    string get_modalidade();
 };
+
+void Campeonato::set_nome(string nome) {
+    this->nome = nome;
+}
+
+string Campeonato::get_nome() {
+    return this->nome;
+}
+
+void Campeonato::set_modalidade(string modalidade) {
+    this->modalidade = modalidade;
+}
+
+string Campeonato::get_modalidade() {
+    return this->modalidade;
+}
 
 Campeonato::Campeonato(string nome, string modalidade)
 {
